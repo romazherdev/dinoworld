@@ -1,12 +1,13 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CopyPlugin = require("copy-webpack-plugin");
 
 module.exports = {
     mode: 'development',
     entry: './src/main.ts',
     devtool: 'inline-source-map',
     output: {
-        filename: '[name].js',
+        filename: '[name]..js',
         path: path.resolve(__dirname, 'dist'),
         clean: true,
     },
@@ -16,6 +17,12 @@ module.exports = {
     plugins: [
         new HtmlWebpackPlugin({
             title: 'Dinoworld',
+            template: 'src/index.html',
+        }),
+        new CopyPlugin({
+            patterns: [
+                { from: 'assets', to: 'assets' }
+            ],
         }),
     ],
     module: {
@@ -28,6 +35,14 @@ module.exports = {
             {
                 test: /\.css$/i,
                 use: ['style-loader', 'css-loader'],
+            },
+            {
+                test: /\.(png|svg|jpg|jpeg|gif)$/i,
+                type: 'asset/resource',
+            },
+            {
+                test: /\.(glb|gltf)$/,
+                type: 'asset/resource',
             },
         ],
     },

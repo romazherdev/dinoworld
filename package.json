@@ -10,7 +10,10 @@
   "author": "Roman Zherdev",
   "license": "ISC",
   "devDependencies": {
+    "@types/three": "^0.141.0",
+    "copy-webpack-plugin": "^11.0.0",
     "css-loader": "^6.7.1",
+    "file-loader": "^6.2.0",
     "html-webpack-plugin": "^5.5.0",
     "style-loader": "^3.3.1",
     "ts-loader": "^9.3.0",
@@ -21,6 +24,7 @@
     "webpack-merge": "^5.8.0"
   },
   "dependencies": {
+    "reflect-metadata": "^0.1.13",
     "three": "^0.141.0"
   }
 }
